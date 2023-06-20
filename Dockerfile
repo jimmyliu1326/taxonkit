@@ -13,9 +13,10 @@ RUN apt-get update && \
     rm -rf $CONDA_DIR/lib/python3.*/site-packages/pip && \
     find $CONDA_DIR -name '__pycache__' -type d -exec rm -rf '{}' '+'
 
-RUN mkdir /taxonkit_db && \
-    wget -c ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz -O /taxonkit_db/taxdump.tar.gz && \
-    cd /taxonkit_db && \
+RUN mkdir -p /taxonkit_db && \
+    wget -c ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz -O /taxonkit_db/taxdump.tar.gz 
+
+RUN cd /taxonkit_db && \
     tar -zxvf taxdump.tar.gz
 
 ENV TAXONKIT_DB="/taxonkit_db"
