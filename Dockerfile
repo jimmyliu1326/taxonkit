@@ -3,7 +3,7 @@ ARG version=0.14.2
 ARG package=taxonkit
 
 RUN apt-get update && \
-    apt-get install -y procps && \
+    apt-get install -y procps wget && \
     rm -rf /var/lib/apt/lists/* && \
     CONDA_DIR="/opt/conda" && \
     micromamba install -n base -y -c bioconda -c conda-forge ${package}=${version} && \
